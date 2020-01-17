@@ -58,7 +58,7 @@ Contents are:
 #### Helix Authentication Service
 
 - Administrative expertise with the software of your Identity Provider.
-- [Node.js](https://nodejs.org/), version 12 or later. (The installation script installs Node.js, version 12)
+- [Node.js](https://nodejs.org/), version 10 or later. (The installation script installs Node.js, version 10)
 - (recommended) A process manager for the Node.js runtime, such as [pm2](https://pm2.keymetrics.io/), [forever](https://github.com/foreversd/foreve), or [StrongLoop](http://strong-pm.io/).
 (The installation script installs pm2)
 - A web browser. Any client using the authentication service requires a web browser.
@@ -114,7 +114,7 @@ CentOS and RedHat Enterprise Linux lack Node.js packages of the versions require
 
 ```shell
 $ sudo yum install git gcc-c++ make
-$ curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+$ curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
 $ sudo yum install nodejs
 ```
 
@@ -124,10 +124,10 @@ The package for Python changed names in this OS release, and the NodeSource pack
 
 ```shell
 $ sudo yum install git gcc-c++ make
-$ curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+$ curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
 $ dnf --repo=nodesource download nodejs
-$ sudo rpm -i --nodeps nodejs-12.*.rpm
-$ rm -f nodejs-12.*.rpm
+$ sudo rpm -i --nodeps nodejs-10.*.rpm
+$ rm -f nodejs-10.*.rpm
 ```
 
 #### Fedora 31
@@ -144,7 +144,7 @@ Ubuntu Linux lacks Node.js packages of the versions required by this service, bu
 
 ```shell
 $ sudo apt-get install build-essential curl
-$ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 $ sudo apt-get install nodejs
 ```
 

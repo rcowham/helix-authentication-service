@@ -86,7 +86,7 @@ echo 'This script will install the requirements for the Authentication Service.'
 echo ''
 echo 'The operations involved are as follows:'
 echo '  * Install OS packages for build dependencies'
-echo '  * Download and install Node.js 12'
+echo '  * Download and install Node.js 10'
 echo '  * Download and install the pm2 process manager (http://pm2.keymetrics.io)'
 echo '  * Download and build the service dependencies'
 echo ''
@@ -111,7 +111,7 @@ fi
 cd "$( cd "$(dirname "$0")" ; pwd -P )"
 
 #
-# Install Node 12 using a script from nodesource.com
+# Install Node 10 using a script from nodesource.com
 #
 if ! which node >/dev/null 2>&1; then
     echo "Preparing to install OS packages and Node.js..."
@@ -128,26 +128,26 @@ if ! which node >/dev/null 2>&1; then
         set -e  # now go back to exiting if a command returns non-zero
         sudo apt-get -q update
         sudo apt-get -q -y install build-essential curl git
-        # Run a shell script from the internet as root to get version 12
+        # Run a shell script from the internet as root to get version 10
         # directly from the vendor. This includes npm as well.
         #
         # c.f. https://nodejs.org/en/download/package-manager/
-        curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+        curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         sudo apt-get -q -y install nodejs
     elif [ $PLATFORM == "redhat" ]; then
         sudo yum -q -y install gcc-c++ git make
-        # Run a shell script from the internet as root to get version 12
+        # Run a shell script from the internet as root to get version 10
         # directly from the vendor. This includes npm as well.
         #
         # c.f. https://nodejs.org/en/download/package-manager/
-        curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+        curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
         if [ $(rpm --eval %{rhel}) == '8' ]; then
             # NodeSource dependencies are broken for the time being on the
             # latest CentOS/RHEL release. It expects a 'python' package but it
             # has been renamed to 'python2' (and additionally 'python3') now.
             dnf --repo=nodesource download nodejs
-            sudo rpm -i --nodeps nodejs-12.*.rpm
-            rm -f nodejs-12.*.rpm
+            sudo rpm -i --nodeps nodejs-10.*.rpm
+            rm -f nodejs-10.*.rpm
         else
             sudo yum -q -y install nodejs
         fi
